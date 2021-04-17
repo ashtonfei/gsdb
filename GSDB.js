@@ -68,7 +68,7 @@ class Model {
 
 
 /**
- * Demo to create the User model
+ * Demo 'User' model
  */
 class User extends (Model) {
     constructor() {
@@ -96,7 +96,45 @@ class User extends (Model) {
 }
 
 /**
- * Debmo to use the User model
+ * Demo 'Product' model
+ */
+class Product extends (Model) {
+    constructor() {
+        const databaseId = "1D_DWLjzUeBNkvC8B5YCKmLsnKwLbkmx5W5SCZAnc4eI"
+        const tableName = "Product"
+        const columns = [
+            new Column({
+                key: "name",
+                type: "text",
+                label: "Product Name",
+            }),
+            new Column({
+                key: "description",
+                type: "text",
+                label: "Description",
+            }),
+            new Column({
+                key: "grossWeight",
+                type: "number",
+                label: "Gross weight",
+            }),
+            new Column({
+                key: "netWeight",
+                type: "number",
+                label: "Net weight",
+            }),
+            new Column({
+                key: "price",
+                type: "number",
+                label: "Price",
+            }),
+        ]
+        super(tableName, databaseId, columns)
+    }
+}
+
+/**
+ * Debmo to user models
  */
 function demo() {
     // create the user model
@@ -117,4 +155,21 @@ function demo() {
 
     // get last 2 item
     console.log(user.last(2))
+
+    const product = new Product()
+    product.add({
+        name: "MG843",
+        description: 'iPhone 12 mini',
+        grossWeight: 130,
+        netWeight: 135,
+        price: 650,
+    })
+    product.add({
+        name: "MG842",
+        description: 'iPhone 12',
+        grossWeight: 140,
+        netWeight: 145,
+        price: 760,
+    })
+    console.log(product.all())
 }
