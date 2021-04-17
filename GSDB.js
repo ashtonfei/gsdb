@@ -42,18 +42,18 @@ class Model {
     }
 
     frist(count = 1) {
-        const items = this.getAll()
+        const items = this.all()
         if (count === 1) return items[0]
         return items.slice(0, count)
     }
 
     last(count = 1) {
-        const items = this.getAll()
+        const items = this.all()
         if (count === 1) return items.pop()
         return items.slice(-count)
     }
 
-    getAll() {
+    all() {
         const dataRange = this.table.getDataRange()
         const values = dataRange.getValues().slice(1)
         return values.map((v, i) => {
@@ -104,7 +104,7 @@ function demo() {
     // add a new user to database
     user.add({ username: "afei", firstname: "Ashton", lastname: "Fei" })
     // get all records from user model
-    console.log(user.getAll())
+    console.log(user.all())
 
     // get first item
     console.log(user.frist())
