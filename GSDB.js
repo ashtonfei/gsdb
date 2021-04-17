@@ -41,6 +41,18 @@ class Model {
         this.table.appendRow(values)
     }
 
+    frist(count = 1) {
+        const items = this.getAll()
+        if (count === 1) return items[0]
+        return items.slice(0, count)
+    }
+
+    last(count = 1) {
+        const items = this.getAll()
+        if (count === 1) return items.pop()
+        return items.slice(-count)
+    }
+
     getAll() {
         const dataRange = this.table.getDataRange()
         const values = dataRange.getValues().slice(1)
@@ -93,4 +105,16 @@ function demo() {
     user.add({ username: "afei", firstname: "Ashton", lastname: "Fei" })
     // get all records from user model
     console.log(user.getAll())
+
+    // get first item
+    console.log(user.frist())
+
+    // get first 2 item
+    console.log(user.frist(2))
+
+    // get last item
+    console.log(user.last())
+
+    // get last 2 item
+    console.log(user.last(2))
 }
